@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CharacterType { POOR, RICH };
+
 public class PlayerHareket : MonoBehaviour
 {
-    public CharacterType tType;
+   
     public GameObject tutorialPanel;
     public Animator playerAnimator;
     public float verticalSpeed;
