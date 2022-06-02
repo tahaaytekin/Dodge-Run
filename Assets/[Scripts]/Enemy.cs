@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
                 {
                     isDone = true;
                     //   print("player vuracak");
-                    Player.Instance.Shoot(targetPoint.transform.position);
+                    if (Player.Instance.ballCount > 0) Player.Instance.Shoot(targetPoint.transform.position);
                 }
 
             }
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
         {
             //print("if'e girdi");
             collision.gameObject.tag = "Untagged";
-            collision.gameObject.SetActive(false);
+            //collision.gameObject.SetActive(false);
             meshCapsuleCollider.enabled = false;
             DoRagdoll();
             hipsRb.AddForce(Vector3.forward * forceGuc, ForceMode.Impulse);
