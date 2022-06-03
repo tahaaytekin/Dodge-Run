@@ -53,12 +53,12 @@ public class Enemy : MonoBehaviour
         {
             //print("if'e girdi");
             collision.gameObject.tag = "Untagged";
-            //collision.gameObject.SetActive(false);
+            collision.gameObject.SetActive(false);
             meshCapsuleCollider.enabled = false;
             DoRagdoll();
             hipsRb.AddForce(Vector3.forward * forceGuc, ForceMode.Impulse);
-            MMVibrationManager.Haptic(HapticTypes.LightImpact, true, this);
             particle.SetActive(true);
+            MMVibrationManager.Haptic(HapticTypes.LightImpact, true, this);
             GameManager.Intance.audioSource.PlayOneShot(GameManager.Intance.shootSound);
         }
     }

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip shootSound;
     public static GameManager Intance;
+    public Color[] color;
     private void Awake()
     {
         Intance = this;
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
         {
             Player.Instance.mesh.sharedMaterials[2].color = color;
             Player.Instance.myType = ıtem.cType;
-            Player.Instance.spawnedObject.GetComponent<MeshRenderer>().materials[0].color = color;
+          //  Player.Instance.spawnedObject.GetComponent<MeshRenderer>().materials[0].color = color;
         }
         GameManager.Intance.oldType = ıtem.cType;
     }

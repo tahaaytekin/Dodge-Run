@@ -32,19 +32,19 @@ public class Player : MonoBehaviour
     {
         if (myType == ColourType.BLUE)
         {
-            a.GetComponent<MeshRenderer>().materials[0].color = Color.blue;
+            a.GetComponent<MeshRenderer>().materials[0].color = GameManager.Intance.color[0];
         }
         else if (myType == ColourType.RED)
         {
-            a.GetComponent<MeshRenderer>().materials[0].color = Color.red;
+            a.GetComponent<MeshRenderer>().materials[0].color = GameManager.Intance.color[2];
         }
         else if (myType == ColourType.GREEN)
         {
-            a.GetComponent<MeshRenderer>().materials[0].color = Color.green;
+            a.GetComponent<MeshRenderer>().materials[0].color = GameManager.Intance.color[3];
         }
         else if (myType == ColourType.PURPLE)
         {
-            a.GetComponent<MeshRenderer>().materials[0].color = Color.grey;
+            a.GetComponent<MeshRenderer>().materials[0].color = GameManager.Intance.color[1];
         }
     }
 }
