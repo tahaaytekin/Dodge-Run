@@ -23,10 +23,15 @@ public class Player : MonoBehaviour
     public void Shoot(Vector3 targetPos)
     {
         print("atış yap");
-        spawnedObject = Instantiate(rbShootBall.gameObject, firePointParent.transform);
-        BallColourChange(spawnedObject);
-        spawnedObject.transform.parent = null;
-        spawnedObject.transform.DOMove(targetPos, 0.2f).SetEase(Ease.Linear);
+        if (ballCount > 0)
+        {
+            spawnedObject = Instantiate(rbShootBall.gameObject, firePointParent.transform);
+            BallColourChange(spawnedObject);
+            spawnedObject.transform.parent = null;
+            spawnedObject.transform.DOMove(targetPos, 0.2f).SetEase(Ease.Linear);
+            ballCount--;
+            DOTween.To(() => GameManager.Intance.slider.value, (a) => GameManager.Intance.slider.value = a, -GameManager.Intance.bolunecekSayi, 0.2f).SetRelative().SetEase(Ease.Linear);
+        }
     }
     public void BallColourChange(GameObject a)
     {

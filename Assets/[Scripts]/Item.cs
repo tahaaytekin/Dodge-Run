@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using MoreMountains.NiceVibrations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public enum ColourType { BLUE, PURPLE, RED, GREEN };
 public class Item : MonoBehaviour
 {
-
     public MeshRenderer mesh;
 
     public ColourType cType;
@@ -38,6 +39,7 @@ public class Item : MonoBehaviour
         {
             Player p = other.GetComponentInParent<Player>();
             p.ballCount++;
+            DOTween.To(() => GameManager.Intance.slider.value, (a) => GameManager.Intance.slider.value = a, GameManager.Intance.bolunecekSayi, 0.2f).SetRelative().SetEase(Ease.Linear);
             if (cType == p.myType)
             {
                 print("aynı renk aldın");
@@ -66,6 +68,8 @@ public class Item : MonoBehaviour
                 }
             }
             gameObject.SetActive(false);
+            MMVibrationManager.Haptic(HapticTypes.LightImpact, true, this);
+            GameManager.Intance.audioSource.PlayOneShot(GameManager.Intance.itemSound);
         }
     }
 }

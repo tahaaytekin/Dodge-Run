@@ -1,22 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+    public float sayi;
+    public float bolunecekSayi;
+    public List<GameObject> objeler = new List<GameObject>();
+
+
     public ColourType oldType;
     public AudioSource audioSource;
-    public AudioClip shootSound;
+    public AudioClip shootSound, itemSound,gateSound;
     public static GameManager Intance;
     public Color[] color;
+    public Slider slider;
     private void Awake()
     {
         Intance = this;
     }
-
+    private void Start()
+    {
+        foreach (var item in GameObject.FindGameObjectsWithTag("Item"))
+        {
+            objeler.Add(item);
+        }
+        sayi = objeler.Count;
+        bolunecekSayi = 1 / sayi;
+        print("bolunecek sayi: " + bolunecekSayi + "   " + sayi);
+    }
     public void DoColour(Color color, Item ıtem)
     {
-        print(GameManager.Intance.oldType + "    " + ıtem.cType);
+     //   print(GameManager.Intance.oldType + "    " + ıtem.cType);
         if (GameManager.Intance.oldType == ıtem.cType)
         {
             Player.Instance.colourRank++;
@@ -40,7 +57,7 @@ public class GameManager : MonoBehaviour
         {
             Player.Instance.mesh.sharedMaterials[2].color = color;
             Player.Instance.myType = ıtem.cType;
-          //  Player.Instance.spawnedObject.GetComponent<MeshRenderer>().materials[0].color = color;
+            //  Player.Instance.spawnedObject.GetComponent<MeshRenderer>().materials[0].color = color;
         }
         GameManager.Intance.oldType = ıtem.cType;
     }

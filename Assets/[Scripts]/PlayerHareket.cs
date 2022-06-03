@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHareket : MonoBehaviour
 {
-   
+    public float playerHiz;
     public GameObject tutorialPanel;
     public Animator playerAnimator;
     public float verticalSpeed;
@@ -41,9 +41,8 @@ public class PlayerHareket : MonoBehaviour
             {
                 firstDown = true;
                 tutorialPanel.SetActive(false);
-                verticalSpeed = 7;
+                verticalSpeed = playerHiz;
                 playerAnimator.SetTrigger("Run");
-
             }
             _initalX = cam.ScreenToViewportPoint(Input.mousePosition).x;
             startX = transform.localPosition.x;
