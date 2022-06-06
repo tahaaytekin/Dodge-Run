@@ -9,7 +9,7 @@ public class Finish : MonoBehaviour
     public Rigidbody[] rbs;
 
 
-    public GameObject megaEnemy;
+    public GameObject megaEnemy,particle;
     public MeshRenderer[] mesh;
     public Color[] colors;
 
@@ -43,7 +43,7 @@ public class Finish : MonoBehaviour
             print("final Point'e geldi");
             foreach (var item in Level.Instance.enemies)
             {
-                item.StopFollow();
+             if(item!=null)   item.StopFollow();
             }
             PlayerHareket pMove = other.GetComponentInParent<PlayerHareket>();
             pMove.verticalSpeed = 0;
@@ -60,6 +60,27 @@ public class Finish : MonoBehaviour
         SmoothFollow.Instance.distance *= 2;
         SmoothFollow.Instance.height = 10;
         SmoothFollow.Instance.target = newCameraTarget.transform;
+        Player.Instance.Shoot(megaEnemy.transform.position,true);
+        Invoke(nameof(SonVurus),0.201f);
+        Invoke(nameof(SliderValueControl), 0.205f);
+     
+    }
+    public void DoRagdoll()
+    {
+
+        megaEnemyAnimator.enabled = false;
+        foreach (var item in rbs)
+        {
+            item.isKinematic = false;
+        }
+    }
+    public void SonVurus()
+    {
+        Player.Instance.spawnedObject.SetActive(false);
+        particle.SetActive(true);
+    }
+   public void SliderValueControl()
+    {
         if (GameManager.Intance.slider.value >= 0 && GameManager.Intance.slider.value < 0.1f)
         {
             megaEnemy.transform.DOJump(mesh[0].transform.position, 5f, 1, 1.5f);
@@ -104,16 +125,21 @@ public class Finish : MonoBehaviour
         {
             megaEnemy.transform.DOJump(mesh[10].transform.position, 5f, 1, 3f);
         }
-        GameManager.Intance.StartCoroutine(GameManager.Intance.TextDisplay());
+        Invoke(nameof(MegaMass), 3f);
     }
-    public void DoRagdoll()
+    public void MegaMass()
     {
-
-        megaEnemyAnimator.enabled = false;
         foreach (var item in rbs)
         {
-            item.isKinematic = false;
+            item.mass = 10000;
+            item.isKinematic = true;
         }
+        GameManager.Intance.StartCoroutine(GameManager.Intance.TextDisplay());
+        Invoke(nameof(ConfettiExplode), 1.5f);
     }
-   
+    public void ConfettiExplode()
+    {
+        GameManager.Intance.confetti.SetActive(true);
+        GM.Instance.StartCoroutine(GM.Instance.OpenWinPanel());
+    }
 }

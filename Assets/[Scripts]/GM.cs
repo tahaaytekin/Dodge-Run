@@ -11,7 +11,7 @@ public class GM : MonoBehaviour
     public Text level_text;
     public int currentLevel;
     public bool testMode;
-    public GameObject winPanel, losePanel;
+    public GameObject winPanel, losePanel,IngamePanel;
     public static GM Instance;
     public void Awake()
     {
@@ -64,5 +64,19 @@ public class GM : MonoBehaviour
       //  GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, PlayerPrefs.GetInt("Level").ToString());
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
+    }
+    public IEnumerator OpenWinPanel()
+    {
+        yield return new WaitForSeconds(1f);
+        losePanel.SetActive(false);
+        IngamePanel.SetActive(false);
+        winPanel.SetActive(true);
+    }
+    public IEnumerator OpenLosePanel()
+    {
+        yield return new WaitForSeconds(1f);
+        losePanel.SetActive(true);
+        IngamePanel.SetActive(false);
+        winPanel.SetActive(false);
     }
 }

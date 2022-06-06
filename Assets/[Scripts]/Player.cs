@@ -20,10 +20,10 @@ public class Player : MonoBehaviour
     {
         Instance = this;
     }
-    public void Shoot(Vector3 targetPos)
+    public void Shoot(Vector3 targetPos,bool shootState)
     {
         print("atış yap");
-        if (ballCount > 0)
+        if (ballCount > 0 || shootState)
         {
             spawnedObject = Instantiate(rbShootBall.gameObject, firePointParent.transform);
             BallColourChange(spawnedObject);

@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject confetti;
+
     public int maxColorChanging;
+    private int colorChanging;
 
     public CoinsManager coinsManager;
     public int coinNum;
@@ -64,13 +67,14 @@ public class GameManager : MonoBehaviour
         {
             Player.Instance.mesh.sharedMaterials[2].color = color;
             Player.Instance.myType = ıtem.cType;
-            maxColorChanging++;
-            if (maxColorChanging>=5)
+            colorChanging++;
+            if (colorChanging>= maxColorChanging)
             {
                 print("fail");
                 PlayerHareket.Instance.verticalSpeed = 0;
                 PlayerHareket.Instance.swipeSpeed = 0;
                 PlayerHareket.Instance.playerAnimator.SetTrigger("Fail");
+                GM.Instance.StartCoroutine(GM.Instance.OpenLosePanel());
             }
             //  Player.Instance.spawnedObject.GetComponent<MeshRenderer>().materials[0].color = color;
         }
@@ -78,13 +82,8 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator TextDisplay()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(1f);
         print("girdi");
         coinsManager.AddCoins(Finish.Instance.megaEnemy.transform.position, coinNum, true);
-        Invoke(nameof(SeviyeNext), 2f);
-    }
-    public void SeviyeNext()
-    {
-        GM.Instance.SeviyeAtlama();
     }
 }

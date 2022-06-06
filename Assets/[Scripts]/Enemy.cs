@@ -28,13 +28,14 @@ public class Enemy : MonoBehaviour
         if (Time.time > lastTime + 0.01f)
         {
             lastTime = Time.time;
-            if (transform.position.z - Player.Instance.transform.position.z < 10f && transform.position.z - Player.Instance.transform.position.z > 0)
+            if (transform.position.z - Player.Instance.transform.position.z < 10f && transform.position.z - Player.Instance.transform.position.z > 0 && Mathf.Abs(transform.position.x - Player.Instance.transform.position.x) < 3f)
             {
                 if (!isDone && Player.Instance.ballCount > 0)
                 {
                     isDone = true;
                     //   print("player vuracak");
-                    Player.Instance.Shoot(targetPoint.transform.position);
+                    Player.Instance.Shoot(targetPoint.transform.position, false);
+                    agent.enabled = false;
                 }
 
             }
@@ -76,7 +77,7 @@ public class Enemy : MonoBehaviour
     {
         agent.SetDestination(Player.Instance.transform.position);
         enemyAnimator.SetTrigger("Run");
-        
+
     }
     public void StopFollow()
     {

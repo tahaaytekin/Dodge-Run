@@ -32,7 +32,7 @@ public class Item : MonoBehaviour
             mesh.material.color = GameManager.Intance.color[3];
         }
     }
-
+    int colorRank;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -43,33 +43,61 @@ public class Item : MonoBehaviour
             if (cType == p.myType)
             {
                 print("aynı renk aldın");
+                if (cType == ColourType.BLUE)
+                {
+                    print("blue");
+                    if (Player.Instance.mesh.materials[0].color != GameManager.Intance.color[0]) 
+                    {
+                        Player.Instance.mesh.materials[0].color = GameManager.Intance.color[0];
+                    }
+                  else  if (Player.Instance.mesh.materials[0].color == GameManager.Intance.color[0])
+                    {
+                        Player.Instance.mesh.materials[1].color = GameManager.Intance.color[0];
+                    }
+                    else if (Player.Instance.mesh.materials[1].color == GameManager.Intance.color[0])
+                    {
+                        print("blue2");
+                        Player.Instance.mesh.materials[2].color = GameManager.Intance.color[0];
+                    }
+                }
             }
             else
             {
-                if (cType == ColourType.RED)
-                {
-                    print("rede dönüş");
-                    GameManager.Intance.DoColour(GameManager.Intance.color[2], this);
-                }
-                else if (cType == ColourType.BLUE)
-                {
-                    print("blue dönüş");
-                    GameManager.Intance.DoColour(GameManager.Intance.color[0], this);
-                }
-                else if (cType == ColourType.PURPLE)
-                {
-                    print("purpleColor dönüş");
-                    GameManager.Intance.DoColour(GameManager.Intance.color[1], this);
-                }
-                else if (cType == ColourType.GREEN)
-                {
-                    print("greenColor dönüş");
-                    GameManager.Intance.DoColour(GameManager.Intance.color[3], this);
-                }
+                ItemConditions();
             }
-            gameObject.SetActive(false);
+            gameObject.transform.DOScale(transform.localScale * 1.3f, 0.1f).SetEase(Ease.Linear).OnComplete(() =>
+              {
+                  gameObject.transform.DOScale(Vector3.zero, 0.1f).SetEase(Ease.Linear).OnComplete(() =>
+                  {
+                      gameObject.SetActive(false);
+                  });
+              });
+
             MMVibrationManager.Haptic(HapticTypes.LightImpact, true, this);
             GameManager.Intance.audioSource.PlayOneShot(GameManager.Intance.itemSound);
+        }
+    }
+    public void ItemConditions()
+    {
+        if (cType == ColourType.RED)
+        {
+            print("rede dönüş");
+            GameManager.Intance.DoColour(GameManager.Intance.color[2], this);
+        }
+        else if (cType == ColourType.BLUE)
+        {
+            print("blue dönüş");
+            GameManager.Intance.DoColour(GameManager.Intance.color[0], this);
+        }
+        else if (cType == ColourType.PURPLE)
+        {
+            print("purpleColor dönüş");
+            GameManager.Intance.DoColour(GameManager.Intance.color[1], this);
+        }
+        else if (cType == ColourType.GREEN)
+        {
+            print("greenColor dönüş");
+            GameManager.Intance.DoColour(GameManager.Intance.color[3], this);
         }
     }
 }
