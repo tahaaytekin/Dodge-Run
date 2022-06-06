@@ -43,7 +43,7 @@ public class Finish : MonoBehaviour
             print("final Point'e geldi");
             foreach (var item in Level.Instance.enemies)
             {
-             if(item!=null)   item.StopFollow();
+                if (item != null) Destroy(item.gameObject);
             }
             PlayerHareket pMove = other.GetComponentInParent<PlayerHareket>();
             pMove.verticalSpeed = 0;

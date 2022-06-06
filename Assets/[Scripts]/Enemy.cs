@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
     }
     public void StopFollow()
     {
-        agent.Stop();
+     if(agent!=null)   agent.Stop();
         enemyAnimator.SetTrigger("Idle");
     }
 }

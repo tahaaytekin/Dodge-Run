@@ -75,6 +75,10 @@ public class GameManager : MonoBehaviour
                 PlayerHareket.Instance.swipeSpeed = 0;
                 PlayerHareket.Instance.playerAnimator.SetTrigger("Fail");
                 GM.Instance.StartCoroutine(GM.Instance.OpenLosePanel());
+                foreach (var item in Level.Instance.enemies)
+                {
+                    if (item != null) Destroy(item.gameObject);
+                }
             }
             //  Player.Instance.spawnedObject.GetComponent<MeshRenderer>().materials[0].color = color;
         }
