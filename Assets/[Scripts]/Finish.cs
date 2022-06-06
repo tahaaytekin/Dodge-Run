@@ -57,12 +57,12 @@ public class Finish : MonoBehaviour
     }
     public void ThrowEnemy()
     {
-        SmoothFollow.Instance.distance *= 2;
-        SmoothFollow.Instance.height = 10;
-        SmoothFollow.Instance.target = newCameraTarget.transform;
-        Player.Instance.Shoot(megaEnemy.transform.position,true);
-        Invoke(nameof(SonVurus),0.201f);
-        Invoke(nameof(SliderValueControl), 0.205f);
+        Player.Instance.Shoot(megaEnemy.transform.position, true);
+       
+        Invoke(nameof(SonVurus),0.49f);
+        Invoke(nameof(CamFocus),0.5f);
+
+        Invoke(nameof(SliderValueControl), 0.5f);
      
     }
     public void DoRagdoll()
@@ -78,6 +78,13 @@ public class Finish : MonoBehaviour
     {
         Player.Instance.spawnedObject.SetActive(false);
         particle.SetActive(true);
+       
+    }
+    public void CamFocus()
+    {
+        SmoothFollow.Instance.distance *= 2;
+        SmoothFollow.Instance.height = 10;
+        SmoothFollow.Instance.target = newCameraTarget.transform;
     }
    public void SliderValueControl()
     {

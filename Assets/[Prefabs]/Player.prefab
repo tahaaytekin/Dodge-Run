@@ -115,7 +115,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
-  m_Father: {fileID: 4885751021864052099}
+  m_Father: {fileID: 4656806717823815048}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8790465704488607330
@@ -246,9 +246,9 @@ SkinnedMeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 8790465704488607330}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4885751021864052099 stripped
+--- !u!4 &4656806717823815048 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4193886240769670113, guid: 250eadb68dc79404b822f4f2004d0999,
+  m_CorrespondingSourceObject: {fileID: -5089545924371901462, guid: 250eadb68dc79404b822f4f2004d0999,
     type: 3}
   m_PrefabInstance: {fileID: 8790465704488607330}
   m_PrefabAsset: {fileID: 0}

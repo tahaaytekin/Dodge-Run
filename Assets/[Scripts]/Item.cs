@@ -43,27 +43,12 @@ public class Item : MonoBehaviour
             if (cType == p.myType)
             {
                 print("aynı renk aldın");
-                if (cType == ColourType.BLUE)
-                {
-                    print("blue");
-                    if (Player.Instance.mesh.materials[0].color != GameManager.Intance.color[0]) 
-                    {
-                        Player.Instance.mesh.materials[0].color = GameManager.Intance.color[0];
-                    }
-                  else  if (Player.Instance.mesh.materials[0].color == GameManager.Intance.color[0])
-                    {
-                        Player.Instance.mesh.materials[1].color = GameManager.Intance.color[0];
-                    }
-                    else if (Player.Instance.mesh.materials[1].color == GameManager.Intance.color[0])
-                    {
-                        print("blue2");
-                        Player.Instance.mesh.materials[2].color = GameManager.Intance.color[0];
-                    }
-                }
+                SameColourItemConitions();
+               
             }
             else
             {
-                ItemConditions();
+                DifColourItemConditions();
             }
             gameObject.transform.DOScale(transform.localScale * 1.3f, 0.1f).SetEase(Ease.Linear).OnComplete(() =>
               {
@@ -77,7 +62,7 @@ public class Item : MonoBehaviour
             GameManager.Intance.audioSource.PlayOneShot(GameManager.Intance.itemSound);
         }
     }
-    public void ItemConditions()
+    public void DifColourItemConditions()
     {
         if (cType == ColourType.RED)
         {
@@ -98,6 +83,69 @@ public class Item : MonoBehaviour
         {
             print("greenColor dönüş");
             GameManager.Intance.DoColour(GameManager.Intance.color[3], this);
+        }
+    }
+    public void SameColourItemConitions()
+    {
+        if (cType == ColourType.BLUE)
+        {
+            if (Player.Instance.mesh.materials[0].color != GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[0].color = GameManager.Intance.color[0];
+            }
+            else if (Player.Instance.mesh.materials[0].color == GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[1].color = GameManager.Intance.color[0];
+            }
+            else if (Player.Instance.mesh.materials[1].color == GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[2].color = GameManager.Intance.color[0];
+            }
+        }
+        if (cType == ColourType.PURPLE)
+        {
+            if (Player.Instance.mesh.materials[0].color != GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[0].color = GameManager.Intance.color[1];
+            }
+            else if (Player.Instance.mesh.materials[0].color == GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[1].color = GameManager.Intance.color[1];
+            }
+            else if (Player.Instance.mesh.materials[1].color == GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[2].color = GameManager.Intance.color[1];
+            }
+        }
+        if (cType == ColourType.RED)
+        {
+            if (Player.Instance.mesh.materials[0].color != GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[0].color = GameManager.Intance.color[2];
+            }
+            else if (Player.Instance.mesh.materials[0].color == GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[1].color = GameManager.Intance.color[2];
+            }
+            else if (Player.Instance.mesh.materials[1].color == GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[2].color = GameManager.Intance.color[2];
+            }
+        }
+        if (cType == ColourType.GREEN)
+        {
+            if (Player.Instance.mesh.materials[0].color != GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[0].color = GameManager.Intance.color[3];
+            }
+            else if (Player.Instance.mesh.materials[0].color == GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[1].color = GameManager.Intance.color[3];
+            }
+            else if (Player.Instance.mesh.materials[1].color == GameManager.Intance.color[0])
+            {
+                Player.Instance.mesh.materials[2].color = GameManager.Intance.color[3];
+            }
         }
     }
 }

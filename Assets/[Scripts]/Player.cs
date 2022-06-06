@@ -25,13 +25,26 @@ public class Player : MonoBehaviour
         print("atış yap");
         if (ballCount > 0 || shootState)
         {
-            spawnedObject = Instantiate(rbShootBall.gameObject, firePointParent.transform);
-            BallColourChange(spawnedObject);
-            spawnedObject.transform.parent = null;
-            spawnedObject.transform.DOMove(targetPos, 0.2f).SetEase(Ease.Linear);
-            ballCount--;
-            DOTween.To(() => GameManager.Intance.slider.value, (a) => GameManager.Intance.slider.value = a, -GameManager.Intance.bolunecekSayi, 0.2f).SetRelative().SetEase(Ease.Linear);
+          //  spawnedObject = Instantiate(rbShootBall.gameObject, firePointParent.transform);
+          //  BallColourChange(spawnedObject);
+           // spawnedObject.transform.parent = null;
+            PlayerHareket.Instance.playerAnimator.SetTrigger("Throw");
+            StartCoroutine(DoShoot(targetPos));
+           /// spawnedObject.transform.DOMove(targetPos, 0.2f).SetEase(Ease.Linear);
+            // ballCount--;
+            //  DOTween.To(() => GameManager.Intance.slider.value, (a) => GameManager.Intance.slider.value = a, -GameManager.Intance.bolunecekSayi, 0.2f).SetRelative().SetEase(Ease.Linear);
         }
+    }
+    public IEnumerator DoShoot(Vector3 targetPos)
+    {
+        yield return new WaitForSeconds(0.3f);
+        spawnedObject = Instantiate(rbShootBall.gameObject, firePointParent.transform);
+        BallColourChange(spawnedObject);
+        spawnedObject.transform.parent = null;
+        spawnedObject.transform.DOMove(targetPos, 0.2f).SetEase(Ease.Linear);
+        ballCount--;
+        DOTween.To(() => GameManager.Intance.slider.value, (a) => GameManager.Intance.slider.value = a, -GameManager.Intance.bolunecekSayi, 0.2f).SetRelative().SetEase(Ease.Linear);
+
     }
     public void BallColourChange(GameObject a)
     {
