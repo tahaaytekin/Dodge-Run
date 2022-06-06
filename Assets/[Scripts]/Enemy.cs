@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
+    public NavMeshAgent agent;
     public GameObject particle;
     public float forceGuc;
     public Rigidbody hipsRb;
@@ -29,11 +30,11 @@ public class Enemy : MonoBehaviour
             lastTime = Time.time;
             if (transform.position.z - Player.Instance.transform.position.z < 10f && transform.position.z - Player.Instance.transform.position.z > 0)
             {
-                if (!isDone)
+                if (!isDone && Player.Instance.ballCount > 0)
                 {
                     isDone = true;
                     //   print("player vuracak");
-                    if (Player.Instance.ballCount > 0) Player.Instance.Shoot(targetPoint.transform.position);
+                    Player.Instance.Shoot(targetPoint.transform.position);
                 }
 
             }
@@ -41,7 +42,7 @@ public class Enemy : MonoBehaviour
             {
                 if (!isDone)
                 {
-                    isDone = true;
+                    DoFollow();
                     //  print("kovalayacak");
                 }
             }
@@ -70,5 +71,16 @@ public class Enemy : MonoBehaviour
         {
             item.isKinematic = false;
         }
+    }
+    public void DoFollow()
+    {
+        agent.SetDestination(Player.Instance.transform.position);
+        enemyAnimator.SetTrigger("Run");
+        
+    }
+    public void StopFollow()
+    {
+        agent.Stop();
+        enemyAnimator.SetTrigger("Idle");
     }
 }

@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
             {
                 print("fail");
                 PlayerHareket.Instance.verticalSpeed = 0;
+                PlayerHareket.Instance.swipeSpeed = 0;
                 PlayerHareket.Instance.playerAnimator.SetTrigger("Fail");
             }
             //  Player.Instance.spawnedObject.GetComponent<MeshRenderer>().materials[0].color = color;
