@@ -3979,7 +3979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confetti: {fileID: 1811180833}
-  maxColorChanging: 5
+  maxColorChanging: 3
   coinsManager: {fileID: 0}
   coinNum: 0
   coinText: {fileID: 961770863}
