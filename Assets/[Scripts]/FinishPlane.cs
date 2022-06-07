@@ -7,11 +7,7 @@ public class FinishPlane : MonoBehaviour
 {
    
     public Text planeText;
-    private void Start()
-    {
-       
-
-    }
+  
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("MegaEnemy"))

@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 public class Finish : MonoBehaviour
 {
-    public Transform newCameraTarget;
+    public Transform newCameraTarget,megaEnemyTarget;
     public Animator megaEnemyAnimator;
     public Rigidbody[] rbs;
 
@@ -28,7 +28,6 @@ public class Finish : MonoBehaviour
             item.material.color = colors[c];
             c++;
         }
-
 
         foreach (var item in rbs)
         {
@@ -57,7 +56,7 @@ public class Finish : MonoBehaviour
     }
     public void ThrowEnemy()
     {
-        Player.Instance.Shoot(megaEnemy.transform.position, true);
+        Player.Instance.Shoot(megaEnemyTarget.position, true);
        
         Invoke(nameof(SonVurus),0.49f);
         Invoke(nameof(CamFocus),0.5f);
@@ -149,4 +148,5 @@ public class Finish : MonoBehaviour
         GameManager.Intance.confetti.SetActive(true);
         GM.Instance.StartCoroutine(GM.Instance.OpenWinPanel());
     }
+   
 }

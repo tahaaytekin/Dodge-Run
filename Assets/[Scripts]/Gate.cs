@@ -10,7 +10,7 @@ public class Gate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            print("gate'e girdi");
+          //  print("gate'e girdi");
             Player p = other.GetComponentInParent<Player>();
             p.myType = ColourType.BLUE;
             GameManager.Intance.oldType = ColourType.BLUE;

@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         }
         sayi = objeler.Count;
         bolunecekSayi = 1 / sayi;
-        print("bolunecek sayi: " + bolunecekSayi + "   " + sayi);
+       // print("bolunecek sayi: " + bolunecekSayi + "   " + sayi);
         coinsManager = GameObject.FindObjectOfType<CoinsManager>();
         //PlayerPrefs.GetInt("coin", coinNum);
        // coinText.text = coinNum.ToString();
@@ -48,16 +48,16 @@ public class GameManager : MonoBehaviour
         if (GameManager.Intance.oldType == ıtem.cType)
         {
             Player.Instance.colourRank++;
-            print("colour rank arttı" + "    " + Player.Instance.colourRank);
+          //  print("colour rank arttı" + "    " + Player.Instance.colourRank);
         }
         else
         {
             Player.Instance.colourRank = 1;
-            print("colour rank 1 oldu");
+            //print("colour rank 1 oldu");
         }
         if (Player.Instance.colourRank == 1)
         {
-            Player.Instance.mesh.materials[0].color = color;
+            Player.Instance.mesh.materials[2].color = color;
         }
         else if (Player.Instance.colourRank == 2)
         {
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Player.Instance.colourRank == 3)
         {
-            Player.Instance.mesh.sharedMaterials[2].color = color;
+            Player.Instance.mesh.sharedMaterials[0].color = color;
             Player.Instance.myType = ıtem.cType;
             colorChanging++;
             if (colorChanging>= maxColorChanging)
@@ -87,7 +87,6 @@ public class GameManager : MonoBehaviour
     public IEnumerator TextDisplay()
     {
         yield return new WaitForSeconds(1f);
-        print("girdi");
-        coinsManager.AddCoins(Finish.Instance.megaEnemy.transform.position, coinNum, true);
+         coinsManager.AddCoins(Finish.Instance.megaEnemy.transform.position, coinNum, true);
     }
 }

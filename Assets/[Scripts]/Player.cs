@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     }
     public void Shoot(Vector3 targetPos, bool shootState)
     {
-        print("atış yap");
+     //   print("atış yap");
         if (ballCount > 0 || shootState)
         {
             PlayerHareket.Instance.playerAnimator.SetTrigger("Throw");

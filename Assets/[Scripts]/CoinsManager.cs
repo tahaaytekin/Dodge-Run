@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using System.Collections.Generic;
+using System.Collections;
 
 public class CoinsManager : MonoBehaviour
 {
@@ -44,7 +45,6 @@ public class CoinsManager : MonoBehaviour
         coinNum = PlayerPrefs.GetInt("coin", coinNum);
         coinText.text = coinNum.ToString();
     }
-
     void PrepareCoins(ref Queue<GameObject> dizi, GameObject p)
     {
         GameObject coin;
