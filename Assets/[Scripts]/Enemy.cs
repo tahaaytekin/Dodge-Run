@@ -62,6 +62,9 @@ public class Enemy : MonoBehaviour
             particle.SetActive(true);
             MMVibrationManager.Haptic(HapticTypes.LightImpact, true, this);
             GameManager.Intance.audioSource.PlayOneShot(GameManager.Intance.shootSound);
+            ComboManager.instance.comboCount++;
+            ComboManager.instance.PrintCombo();
+            Invoke(nameof(DoDestroy), 3f);
         }
     }
     public void DoRagdoll()
@@ -83,5 +86,9 @@ public class Enemy : MonoBehaviour
     {
      if(agent!=null)   agent.Stop();
         enemyAnimator.SetTrigger("Idle");
+    }
+    public void DoDestroy()
+    {
+        Destroy(gameObject);
     }
 }

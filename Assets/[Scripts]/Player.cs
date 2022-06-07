@@ -20,19 +20,13 @@ public class Player : MonoBehaviour
     {
         Instance = this;
     }
-    public void Shoot(Vector3 targetPos,bool shootState)
+    public void Shoot(Vector3 targetPos, bool shootState)
     {
         print("atış yap");
         if (ballCount > 0 || shootState)
         {
-          //  spawnedObject = Instantiate(rbShootBall.gameObject, firePointParent.transform);
-          //  BallColourChange(spawnedObject);
-           // spawnedObject.transform.parent = null;
             PlayerHareket.Instance.playerAnimator.SetTrigger("Throw");
             StartCoroutine(DoShoot(targetPos));
-           /// spawnedObject.transform.DOMove(targetPos, 0.2f).SetEase(Ease.Linear);
-            // ballCount--;
-            //  DOTween.To(() => GameManager.Intance.slider.value, (a) => GameManager.Intance.slider.value = a, -GameManager.Intance.bolunecekSayi, 0.2f).SetRelative().SetEase(Ease.Linear);
         }
     }
     public IEnumerator DoShoot(Vector3 targetPos)

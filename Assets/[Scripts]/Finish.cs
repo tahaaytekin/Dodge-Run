@@ -51,7 +51,7 @@ public class Finish : MonoBehaviour
             {
                 print(GameManager.Intance.slider.value);
                 ThrowEnemy();
-                Invoke(nameof(DoRagdoll), 0.05f);
+                Invoke(nameof(DoRagdoll), 0.5f);
             });
         }
     }
@@ -132,7 +132,7 @@ public class Finish : MonoBehaviour
         {
             megaEnemy.transform.DOJump(mesh[10].transform.position, 5f, 1, 3f);
         }
-        Invoke(nameof(MegaMass), 3f);
+        Invoke(nameof(MegaMass), 3.05f);
     }
     public void MegaMass()
     {
