@@ -1523,7 +1523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.93333334, g: 0.27058825, b: 0.30588236, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.012152195, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   level: {fileID: 0}
   level_text: {fileID: 350721109}
   currentLevel: 0
-  testMode: 0
+  testMode: 1
   winPanel: {fileID: 402517674}
   losePanel: {fileID: 2107847813}
   IngamePanel: {fileID: 923753117}
@@ -2841,7 +2841,7 @@ PrefabInstance:
     - target: {fileID: 9056347732099585951, guid: 5778b75b219f537408b23f0993026189,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5778b75b219f537408b23f0993026189, type: 3}
