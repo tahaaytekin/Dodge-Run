@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject confetti;
 
     public int maxColorChanging;
-    private int colorChanging;
+    public int colorChanging;
 
     public CoinsManager coinsManager;
     public int coinNum;
