@@ -39,7 +39,7 @@ public class Finish : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            print("final Point'e geldi");
+           // print("final Point'e geldi");
             foreach (var item in Level.Instance.enemies)
             {
                 if (item != null) Destroy(item.gameObject);
@@ -48,7 +48,7 @@ public class Finish : MonoBehaviour
             pMove.verticalSpeed = 0;
             pMove.gameObject.transform.DOMove(finalPoint.position, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
             {
-                print(GameManager.Intance.slider.value);
+              //  print(GameManager.Intance.slider.value);
                 ThrowEnemy();
                 Invoke(nameof(DoRagdoll), 0.5f);
             });

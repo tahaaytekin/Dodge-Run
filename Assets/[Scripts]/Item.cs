@@ -42,13 +42,13 @@ public class Item : MonoBehaviour
             DOTween.To(() => GameManager.Intance.slider.value, (a) => GameManager.Intance.slider.value = a, GameManager.Intance.bolunecekSayi, 0.2f).SetRelative().SetEase(Ease.Linear);
             if (cType == p.myType)
             {
-                print("aynı renk aldın");
+             //   print("aynı renk aldın");
                 SameColourItemConitions();
                
             }
             else
             {
-                print("farklı renk aldın");
+              //  print("farklı renk aldın");
                 DifColourItemConditions();
             }
             gameObject.transform.DOScale(transform.localScale * 1.3f, 0.1f).SetEase(Ease.Linear).OnComplete(() =>
