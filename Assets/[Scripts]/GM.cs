@@ -79,6 +79,7 @@ public class GM : MonoBehaviour
     public IEnumerator OpenLosePanel()
     {
         yield return new WaitForSeconds(1f);
+        Elephant.LevelFailed(currentLevel);
         losePanel.SetActive(true);
         IngamePanel.SetActive(false);
         winPanel.SetActive(false);

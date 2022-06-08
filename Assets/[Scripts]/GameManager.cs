@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
             if (colorChanging>= maxColorChanging)
             {
                 print("fail"); 
-                Elephant.LevelFailed(GM.Instance.currentLevel);
+               
                 PlayerHareket.Instance.verticalSpeed = 0;
                 PlayerHareket.Instance.swipeSpeed = 0;
                 PlayerHareket.Instance.playerAnimator.SetTrigger("Fail");
