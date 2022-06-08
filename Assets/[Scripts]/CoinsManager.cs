@@ -58,6 +58,7 @@ public class CoinsManager : MonoBehaviour
     }
     void Animate(Vector3 collectedCoinPosition, int amount)
     {
+        DOTween.SetTweensCapacity(500, 50);
         for (int i = 0; i < amount; i++)
         {
             if (coinsQueue.Count > 0)
