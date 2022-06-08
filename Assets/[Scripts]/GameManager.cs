@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ElephantSDK;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -70,11 +71,13 @@ public class GameManager : MonoBehaviour
             colorChanging++;
             if (colorChanging>= maxColorChanging)
             {
-                print("fail");
+                print("fail"); 
+                Elephant.LevelFailed(GM.Instance.currentLevel);
                 PlayerHareket.Instance.verticalSpeed = 0;
                 PlayerHareket.Instance.swipeSpeed = 0;
                 PlayerHareket.Instance.playerAnimator.SetTrigger("Fail");
                 GM.Instance.StartCoroutine(GM.Instance.OpenLosePanel());
+               
                 foreach (var item in Level.Instance.enemies)
                 {
                     if (item != null) Destroy(item.gameObject);

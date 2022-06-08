@@ -148,6 +148,7 @@ public class Finish : MonoBehaviour
     {
         GameManager.Intance.confetti.SetActive(true);
         GM.Instance.StartCoroutine(GM.Instance.OpenWinPanel());
+
     }
    
 }

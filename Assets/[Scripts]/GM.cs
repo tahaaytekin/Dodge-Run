@@ -1,4 +1,6 @@
 ﻿
+using ElephantSDK;
+using Facebook.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,13 +13,12 @@ public class GM : MonoBehaviour
     public Text level_text;
     public int currentLevel;
     public bool testMode;
-    public GameObject winPanel, losePanel,IngamePanel;
+    public GameObject winPanel, losePanel, IngamePanel;
     public static GM Instance;
     public void Awake()
     {
         Instance = this;
-      /*  GameAnalytics.Initialize();
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, PlayerPrefs.GetInt("Level").ToString());
+       /* Elephant.LevelStarted(currentLevel);
         if (FB.IsInitialized)
         {
             FB.ActivateApp();
@@ -30,6 +31,7 @@ public class GM : MonoBehaviour
                 FB.ActivateApp();
             });
         }*/
+
     }
     private void Start()
     {
@@ -53,7 +55,7 @@ public class GM : MonoBehaviour
     }
     public void SeviyeAtlama()
     {
-       // GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, PlayerPrefs.GetInt("Level").ToString());
+       
         PlayerPrefs.SetInt("Tutorial", 1);
         PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -61,16 +63,18 @@ public class GM : MonoBehaviour
     }
     public void Restart()
     {
-      //  GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, PlayerPrefs.GetInt("Level").ToString());
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }
     public IEnumerator OpenWinPanel()
     {
         yield return new WaitForSeconds(1f);
+        //  Elephant.LevelCompleted(currentLevel);
         losePanel.SetActive(false);
         IngamePanel.SetActive(false);
         winPanel.SetActive(true);
+      
     }
     public IEnumerator OpenLosePanel()
     {
