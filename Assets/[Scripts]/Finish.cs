@@ -133,6 +133,7 @@ public class Finish : MonoBehaviour
         }
         Invoke(nameof(MegaMass), 3.05f);
     }
+   
     public void MegaMass()
     {
         foreach (var item in rbs)

@@ -19,10 +19,10 @@ public class Gate : MonoBehaviour
             Player.Instance.mesh.materials[2].color = GameManager.Intance.color[0];
             MMVibrationManager.Haptic(HapticTypes.LightImpact, true, this);
             GameManager.Intance.audioSource.PlayOneShot(GameManager.Intance.gateSound);
-            gameObject.transform.DOScale(Vector3.zero, 0.15f).SetEase(Ease.Linear).OnComplete(()=> 
-            {
+          //  gameObject.transform.DOScale(Vector3.zero, 0.15f).SetEase(Ease.Linear).OnComplete(()=> 
+            //{
                 gameObject.SetActive(false);
-            });
+          //  });
         }
     }
 }
