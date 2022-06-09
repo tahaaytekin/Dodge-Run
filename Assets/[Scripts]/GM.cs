@@ -42,11 +42,11 @@ public class GM : MonoBehaviour
     {
         level_text.text = "LEVEL " + (currentLevel + 1);
 
-        if (currentLevel > 5)
+        if (currentLevel > 2)
         {
             Random.InitState(System.DateTime.Now.Millisecond);
             //  currentLevel = Random.Range(0, 4);
-            level = (GameObject)Instantiate(Resources.Load("Level" + Random.Range(0, 6)));
+            level = (GameObject)Instantiate(Resources.Load("Level" + Random.Range(0, 3)));
         }
         else
         {
