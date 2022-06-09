@@ -9,6 +9,14 @@ EditorBuildSettings:
     path: Assets/Elephant/elephant_scene.unity
     guid: 47a686e3b898646ae802a7832a649176
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  m_configObjects: {}
+    path: Assets/Levels/LEVEL 0.unity
+    guid: e2706d545184d4affa13452efffa794e
+  - enabled: 1
+    path: Assets/Levels/LEVEL 1.unity
+    guid: 4f72a620bf82343ce925a34f52a376dd
+  - enabled: 1
+    path: Assets/Levels/LEVEL 2.unity
+    guid: 269ea831da5f440a4b584c0de11ab844
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e3bbb7a1bdee0471a9faa6ffd746ab35,
+      type: 2}
