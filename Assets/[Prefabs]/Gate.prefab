@@ -77,6 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e90d6acf458be846b40050dc168055b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myGate: 0
+  planeObject: {fileID: 4984320847714338796}
+  blueMaterial: {r: 0, g: 0.7479329, b: 1, a: 1}
+  purpleMaterial: {r: 1, g: 0, b: 0.8753967, a: 1}
+  redMaterial: {r: 1, g: 0, b: 0.21097517, a: 1}
+  greenMaterial: {r: 0, g: 1, b: 0.22587347, a: 1}
 --- !u!114 &7352502195318344295
 MonoBehaviour:
   m_ObjectHideFlags: 0
